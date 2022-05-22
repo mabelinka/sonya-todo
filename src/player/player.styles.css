@@ -1,0 +1,56 @@
+.player{
+    width: 26%;
+    height: 73px;
+    display: flex;
+    align-items: center;
+    background-color: rgba(87, 91, 133, 0.3);
+    margin-left: 29.4%;
+    transform: translateY(-785%);
+    border-radius: 53px;
+    justify-content: space-evenly;
+}
+
+.switch-key{
+    width: 50px;
+    height: 50px;
+    background-color: rgba(142, 108, 191, 1);
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.play-button{
+    margin-left: 5px;
+    margin-bottom: 1px;
+    width: 23px;
+    height: 23px;
+}
+
+.mute-button{
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.pause-button{
+    margin-left: 0.1rem;
+    width: 21px;
+    height: 21px;
+}
+
+.audio-volume{
+    height: 10%;
+    width: 55%;
+    background: rgba(129, 141, 255, 0.44);
+    border-radius: 25px;
+    cursor: pointer;
+    margin: 0;
+    outline: 0;
+    -webkit-appearance: none;
+}
+
+.is-muted:before{
+    content: "\f026";
+}

@@ -1,0 +1,26 @@
+
+.timer_prompt{
+    color: white;
+    position: absolute;
+    font-weight: 500;
+    right: 3%;
+    font-size: 1.2rem;
+    border-bottom: 1px solid #b0b0b0;
+    padding-bottom: 0.3rem;
+    margin-right: 0.5rem;
+    padding-right: 0.1rem;
+    transition: transform 0.2s ease-in-out;
+    top: 0;
+
+}
+.timer_prompt:hover{
+    transform: translateY(0px) scale(1.01);
+    cursor: pointer;
+}
+.timer_prompt.time{
+    font-size: 1.5rem;
+    right: 5%;
+    transform: translateY(0px);
+    z-index: 1000;
+
+}
