@@ -5,21 +5,20 @@ import './timer.styles.css'
 import {useTimer} from "../hooks/useTimer";
 
 const TimerComponent = () => {
+
     const Timer = useTimer()
     const [isActive, setIsActive] = useState(Timer.getFromLocalStorage() !== null) // if null -> no timer -> not active
     const defaultTimer= Timer.getFromLocalStorage()
     const defaultValue = defaultTimer ? Timer.stringifyTimer(defaultTimer) : null
     const [time, setTime] = useState(defaultValue) // str timer, by default hooks from localStorage
-    const [restTime, setRestTime] = useState(0)
+    const [restTime, setRestTime] = useState(60 - Timer.getDefaultTime())
+
     useEffect(() => {
         if(!isActive) return
 
         const t = setTimeout(() => {
             const normalTimer = Timer.parseToTimer(time) // normal timer(starting timer)
-            if(!restTime){
-                const restTime = 60 - normalTimer.min
-                setRestTime(restTime)
-            }
+
             const subtractedTimer = Timer.subtractSecond(normalTimer) // normal timer(-1sec)
             if(!subtractedTimer) {
                 stopTimer()
@@ -42,7 +41,7 @@ const TimerComponent = () => {
             alert("Некоректный формат времени!")
             return
         }
-        if(min >= 60 || min < 15) {
+        if(min >= 60 || min < 1) {
             alert("Минимальное время сессии - 15 минут, максимальное - 60!")
             return
         }
@@ -50,13 +49,16 @@ const TimerComponent = () => {
         const t = Timer.makeTimer(min)
         const st = Timer.stringifyTimer(t)
         setTime(st)
+        setRestTime(60-min)
+        Timer.setSessionTime(min)
         setIsActive(true)
     }
 
     function stopTimer(){
-        alert(`Вы закончили сессию, поздравляем! Отдыхайте ${restTime}`)
+        alert(`Вы закончили сессию, поздравляем! Отдыхайте ${restTime} минут`)
         setTime(null)
         setIsActive(false)
+        Timer.clearTimer()
     } // stops automaticly
 
     function nativelyStopTimer(){

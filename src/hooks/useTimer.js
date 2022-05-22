@@ -1,6 +1,8 @@
 import {Timer} from "../timer/Timer";
 
 const TIMER_KEY = 'timer'
+const DEFAULT_KEY = 'timer_default'
+
 export function useTimer () {
 
 
@@ -12,7 +14,7 @@ export function useTimer () {
             timer.sec = 59
             timer.min = timer.min - 1
             return timer
-        }else if (sec > 0 && min > 0){
+        }else if (sec > 0 && min >= 0){
             timer.sec = timer.sec - 1
             return timer
         }else {
@@ -40,10 +42,6 @@ export function useTimer () {
         localStorage.setItem(TIMER_KEY, JSON.stringify(timer))
     }
 
-    function setDefault(){
-
-    }
-
     function getFromLocalStorage(){
         const t = JSON.parse(localStorage.getItem(TIMER_KEY))
 
@@ -54,6 +52,15 @@ export function useTimer () {
         localStorage.removeItem(TIMER_KEY)
     }
 
-    return {clearTimer,subtractSecond,makeTimer,stringifyTimer,getFromLocalStorage,saveToLocalStorage, parseToTimer}
+    function setSessionTime(min){
+        const t = new Timer(min, 0)
+        localStorage.setItem(DEFAULT_KEY, JSON.stringify(t))
+    }
+
+    function getDefaultTime(){
+        return JSON.parse(localStorage.getItem(DEFAULT_KEY)).min
+    }
+
+    return {clearTimer, setSessionTime, getDefaultTime, subtractSecond,makeTimer,stringifyTimer,getFromLocalStorage,saveToLocalStorage, parseToTimer}
 
 }
