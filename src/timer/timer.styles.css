@@ -18,8 +18,8 @@
     cursor: pointer;
 }
 .timer_prompt.time{
-    font-size: 1.5rem;
-    right: 5%;
+    font-size: 1.7rem;
+    right: 6%;
     transform: translateY(0px);
     z-index: 1000;
 
