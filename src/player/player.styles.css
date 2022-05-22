@@ -5,9 +5,10 @@
     align-items: center;
     background-color: rgba(87, 91, 133, 0.3);
     margin-left: 29.4%;
-    transform: translateY(-785%);
     border-radius: 53px;
     justify-content: space-evenly;
+    position: absolute;
+    top: 0;
 }
 
 .switch-key{
