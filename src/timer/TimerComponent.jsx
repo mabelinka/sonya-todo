@@ -41,7 +41,7 @@ const TimerComponent = () => {
             alert("Некоректный формат времени!")
             return
         }
-        if(min >= 60 || min < 1) {
+        if(min >= 60 || min < 15) {
             alert("Минимальное время сессии - 15 минут, максимальное - 60!")
             return
         }

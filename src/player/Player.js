@@ -2,11 +2,12 @@ import React from 'react';
 
 import './player.styles.css'
 import {useState} from "react";
-import {mute, playIcon} from "../images";
+import {mute, playIcon,pauseIcon, unMute} from "../images";
 
 const Player = ({r}) => {
 
     function toggleVideo(){
+        setIsPlaying((p) => !p)
         if(r.current.paused){
             r.current.play()
             return
@@ -15,17 +16,31 @@ const Player = ({r}) => {
         r.current.pause()
     }
 
-    function muteF(){
-        r.current.volume = 0
-        setVolume(0.0)
+
+    function toggleVolume(){
+        if(isMuted){
+            r.current.volume = onMuteVolume
+            setVolume(onMuteVolume)
+        }else {
+            setOnMuteVolume(volume)
+            r.current.volume = 0
+            setVolume(0)
+        }
+        setIsMuted((p) => !p)
     }
 
-    const [volume, setVolume] = useState(0.0)
+    const [volume, setVolume] = useState(0.5)
+    const [isMuted, setIsMuted] = useState(false)
+    const [isPlaying, setIsPlaying] = useState(true)
+    const [onMuteVolume, setOnMuteVolume] = useState(0.0)
 
     return (
         <div className="player">
-            <div className="switch-key">
-                <img onClick={() => toggleVideo()} className="play-button" src={playIcon} alt="" />
+            <div className="switch-key" onClick={() => toggleVideo()}>
+                {isPlaying ?
+                    <img  className="play-button" src={playIcon} alt="" /> :
+                    <img src={pauseIcon} className='pause-button' alt=""/>
+                }
             </div>
             <input
                 type="range"
@@ -33,13 +48,15 @@ const Player = ({r}) => {
                 value={volume}
                 onChange={(e => {
                     setVolume(Number(e.target.value))
-
-                    r.current.volume = volume / 100
+                    r.current.volume = volume
                 })}
                 min={0.0}
-                max={100.0}
-                step={0.1} />
-            <img onClick={() => muteF()} src={mute} className="mute-button" alt=""/>
+                max={1}
+                step={0.01} />
+            {isMuted ?
+                <img onClick={() => toggleVolume()} src={mute} className="mute-button" alt=""/> :
+                <img onClick={() => toggleVolume()} className='mute-button' src={unMute} alt=""/>
+            }
         </div>
     );
 };
