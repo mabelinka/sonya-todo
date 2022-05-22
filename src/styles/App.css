@@ -107,6 +107,11 @@
     justify-content: space-evenly;
     width: 100%;
 }
+@media(min-width: 1500px){
+    .todoItem{
+        font-size: 1.25rem;
+    }
+}
 
 .todoLeftPart{
     background-color: rgba(129, 141, 255, 0.22);

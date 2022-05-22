@@ -58,7 +58,11 @@ export function useTimer () {
     }
 
     function getDefaultTime(){
-        return JSON.parse(localStorage.getItem(DEFAULT_KEY)).min
+        const timer = JSON.parse(localStorage.getItem(DEFAULT_KEY))
+        if(timer){
+            return timer.min
+        }
+        return 0
     }
 
     return {clearTimer, setSessionTime, getDefaultTime, subtractSecond,makeTimer,stringifyTimer,getFromLocalStorage,saveToLocalStorage, parseToTimer}

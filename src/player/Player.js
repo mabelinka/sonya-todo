@@ -1,8 +1,8 @@
 import React from 'react';
-import playIcon from '../assets/play-button.svg'
-import mute from '../assets/mute-button.svg'
+
 import './player.styles.css'
 import {useState} from "react";
+import {mute, playIcon} from "../images";
 
 const Player = ({r}) => {
 

@@ -1,10 +1,9 @@
 import React from 'react';
-import imgCompleted from "../assets/img-completed.svg";
-import doneImg from "../assets/done.svg";
 import {useRef} from "react";
 import {useContext} from "react";
 import {TodoContext} from "./TodoCtx";
 import {useLocalStorage} from "../hooks/useLocalStorage";
+import {doneImg, imgCompleted} from "../images";
 
 
 const TodoItemCompleted = ({todo}) => {

@@ -1,7 +1,7 @@
 import React, {useContext, useRef} from 'react';
-import imgCompleted from "../assets/img-completed.svg";
-import doneImg from "../assets/done.svg";
+
 import {TodoContext} from "./TodoCtx";
+import {imgCompleted, doneImg} from "../images";
 
 const TodoItem = ({todo}) => {
 

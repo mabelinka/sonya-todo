@@ -1,6 +1,4 @@
 import React from 'react';
-import imgCompleted from "../assets/img-completed.svg";
-import doneImg from "../assets/done.svg";
 import TodoItem from "./TodoItem";
 
 const TodoList = ({todos}) => {

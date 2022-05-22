@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
-import btnAdd from "../assets/add-button.svg";
-import todo from "../todo/Todo";
+import {btnAdd} from "../images";
 
 const InputAdd = ({addNewTodo, db}) => {
 

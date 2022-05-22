@@ -1,9 +1,7 @@
 import React, {useEffect, useRef} from 'react'
-import styles from './styles/App.css'
 import Todo from './todo/Todo'
 
 import {useState} from "react";
-import backgroundImage from './assets/background-image.jpg'
 
 import TodoList from "./todo/TodoList";
 import InputAdd from "./input/InputAdd";
@@ -12,8 +10,9 @@ import ProgressContainer from "./progressBar/ProgressContainer";
 import {useLocalStorage} from "./hooks/useLocalStorage";
 import TimerComponent from "./timer/TimerComponent";
 import Player from "./player/Player";
+import {video} from "./images";
+import './styles/App.css'
 
-import video from './assets/videos/video.mp4'
 
 
 function App() {
